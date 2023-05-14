@@ -1,16 +1,147 @@
 .container {
-  max-width: 1397px;
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 24px 32px 32px 32px;
+  background-color: #2b2b2b;
 }
 
-.avatar {
+/* title */
+
+.title-and-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.title-movie h2 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+.rating-movie {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.txt-rating {
+  color: #8b8b8b;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/* movie info */
+
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+.movie-poster {
+  min-width: 200px;
+  height: 250px;
+  background-repeat: no-repeat;
+}
+
+.movie-description {
+  display: flex;
+  flex-direction: column;
+  padding-right: 308px;
+}
+
+.movie-description p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.movie-genre {
+  display: flex;
+  column-gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 16px 0 32px 0;
+}
+
+.btn {
+  display: inline-block;
+  width: 93px;
+  height: 32px;
+  background-color: #383838;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.movie-cast {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: #8b8b8b;
+}
+
+.movie-avatar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 30px;
+  column-gap: 10px;
+  margin-top: 12px;
 }
 
-.avatar-actor {
+.movie-avatar p {
+  margin-top: 6px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.movie-avatar__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-avatar__actor {
+  display: flex;
+  flex-direction: column;
   width: 50px;
   height: 50px;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Similar movies */
+
+.movie-similar__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.movie-similar__poster {
+  display: flex;
+  column-gap: 10px;
+  margin-top: 16px;
+}
+
+.movie-similar__img {
+  min-width: 108px;
+  height: 135px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }

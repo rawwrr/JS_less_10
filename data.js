@@ -158,6 +158,20 @@ const movies = [
 
 // console.log(newArrMov(movies));
 
+const newArrMov = (arrMovie) => {
+  let currentYear = new Date().getFullYear();
+
+  arrMovie.map((arrActor) => {
+    return arrActor.actors.map((actor) => {
+      const { birthyear } = actor;
+      return { ...actor, age: birthyear ? currentYear - birthyear : null };
+    });
+  });
+  return { ...arrMovie };
+};
+
+console.log(newArrMov(movies));
+
 // # 2. Создать массив объектов: один объект - это один жанр фильмов, имеющий структуру:
 // [
 //   {
