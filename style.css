@@ -33,28 +33,30 @@
   line-height: 21px;
 }
 
+.rating-movie:hover .box-rating {
+  visibility: visible;
+}
+
 .box-rating {
   position: absolute;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  visibility: hidden;
 
   text-align: center;
 
   width: 123px;
   height: 143px;
-  top: 82px;
-  right: 380px;
+  top: 83px;
+  right: 372px;
+  padding: 0 30px 0 30px;
 
   background-color: #d9d9d9;
-  /* z-index: 1; */
+  transition: all 0.6s;
 }
 
 .rating-input {
   display: flex;
   flex-direction: column;
+  padding-top: 13px;
 }
 
 .box-rating-text {
@@ -72,6 +74,7 @@
 }
 
 .num-rating {
+  height: 24px;
   margin-top: 18px;
   border: none;
   text-align: center;
@@ -82,7 +85,7 @@
 }
 
 .btn-rate {
-  margin-top: 12px;
+  margin-top: 10px;
   width: 63px;
   height: 23px;
   background-color: #000000;
@@ -127,7 +130,7 @@
   margin: 16px 0 32px 0;
 }
 
-.btn {
+.btn-genre {
   display: inline-block;
   width: 93px;
   height: 32px;
