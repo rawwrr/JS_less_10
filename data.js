@@ -140,37 +140,25 @@ const movies = [
 ];
 
 // # 1. Создать новый массив, добавив для каждого актера свойство age и посчитать его, учитывая текущий год (найти способ, как получать текущий год с помощью JS)
-// const newArrMov = (arrMovie) => {
-//   return arrMovie.map((arrActor) => {
-//     return arrActor.actors.map((birth) => {
-//       let currentYear = new Date().getFullYear();
 
-//       if (birth.birthyear) {
-//         currentYear -= birth.birthyear;
-//       } else {
-//         currentYear = null;
-//       }
+const newArrMov = (arrMovie) => {
+  let currentYear = new Date().getFullYear();
 
-//       return { ...birth, age: currentYear };
-//     });
-//   });
-// };
+  const arrMov = arrMovie.map((item) => {
+    let actorYear = item.actors.map((actor) => {
+      const { birthyear } = actor;
+      return {
+        ...actor,
+        age: birthyear ? currentYear - birthyear : null,
+      };
+    });
+    return { ...item, actors: actorYear };
+  });
 
-// console.log(newArrMov(movies));
+  return arrMov;
+};
 
-// const newArrMov = (arrMovie) => {
-//   let currentYear = new Date().getFullYear();
-
-//   arrMovie.map((arrActor) => {
-//     return arrActor.actors.map((actor) => {
-//       const { birthyear } = actor;
-//       return { ...actor, age: birthyear ? currentYear - birthyear : null };
-//     });
-//   });
-//   return { ...arrMovie };
-// };
-
-// console.log(newArrMov(movies));
+console.log(newArrMov(movies));
 
 // # 2. Создать массив объектов: один объект - это один жанр фильмов, имеющий структуру:
 // [
