@@ -141,24 +141,24 @@ const movies = [
 
 // # 1. Создать новый массив, добавив для каждого актера свойство age и посчитать его, учитывая текущий год (найти способ, как получать текущий год с помощью JS)
 
-const newArrMov = (arrMovie) => {
-  let currentYear = new Date().getFullYear();
+// const newArrMov = (arrMovie) => {
+//   let currentYear = new Date().getFullYear();
 
-  const arrMov = arrMovie.map((item) => {
-    let actorYear = item.actors.map((actor) => {
-      const { birthyear } = actor;
-      return {
-        ...actor,
-        age: birthyear ? currentYear - birthyear : null,
-      };
-    });
-    return { ...item, actors: actorYear };
-  });
+//   const arrMov = arrMovie.map((item) => {
+//     let actorYear = item.actors.map((actor) => {
+//       const { birthyear } = actor;
+//       return {
+//         ...actor,
+//         age: birthyear ? currentYear - birthyear : null,
+//       };
+//     });
+//     return { ...item, actors: actorYear };
+//   });
 
-  return arrMov;
-};
+//   return arrMov;
+// };
 
-console.log(newArrMov(movies));
+// console.log(newArrMov(movies));
 
 // # 2. Создать массив объектов: один объект - это один жанр фильмов, имеющий структуру:
 // [
@@ -178,7 +178,7 @@ console.log(newArrMov(movies));
 
 // const genres = movies.reduce((acc, movie) => {
 //   movie.genre.forEach((genre) => {
-//     if (acc.includes(genre) === false) {
+//     if (!acc.includes(genre)) {
 //       acc.push(genre);
 //     }
 //   });
@@ -196,3 +196,76 @@ console.log(newArrMov(movies));
 
 // console.log(genres);
 // console.log(genresMovies);
+
+// 3. Верстка...
+// Создать функцию, которая принимает в себя id фильма из массива
+const getMovie = (arr, { id }) => {
+  const titleMovies = document.querySelector(".title-movie h2");
+  const moviesDescription = document.querySelector(".movie-description p");
+  const movieRating = document.querySelector(".user-ratings");
+  const btnGenre = document.querySelectorAll(".btn-genre");
+  const nameActor = document.querySelectorAll(".movie-avatar__name");
+  const avatarActor = document.querySelectorAll(".movie-avatar__actor");
+  const imgTitle = document.querySelector(".movie-poster");
+
+  const lastNames = arr.flatMap((elem) =>
+    elem.actors.map((actor) => {
+      const fullName = actor.name;
+      const lastName = fullName.split(" ").pop().toLowerCase();
+
+      return `${lastName}.jpg`;
+    })
+  );
+
+  console.log(lastNames);
+  // console.log(arrTitle);
+
+  arr.forEach((idFilm) => {
+    if (idFilm.id === id) {
+      titleMovies.innerText = idFilm.title;
+      moviesDescription.innerText = idFilm.description;
+      movieRating.innerText = idFilm.rating;
+
+      if (id === 1) {
+        imgTitle.style.backgroundImage = "url(./images/1.jpg)";
+      } else if (id === 2) {
+        imgTitle.style.backgroundImage = "url(./images/2.jpg)";
+      } else {
+        imgTitle.style.backgroundImage = "url(./images/3.jpg)";
+      }
+
+      const actorName = idFilm.actors.map((actor) => actor.name);
+      // console.log(actorName);
+
+      actorName.forEach((actor, k) => {
+        nameActor[k].innerText = actor;
+      });
+
+      idFilm.genre.forEach((genres, i) => {
+        btnGenre[i].innerText = genres;
+      });
+    }
+  });
+};
+
+getMovie(movies, { id: 3 });
+
+// const getMovie = (id) => { ... }
+
+// В зависимости от ID заполнять страницу данными из объекта фильма
+
+// Все картинки должны отображаться
+
+// О рейтинге:
+
+// 0 - 5 (красный)
+// 5 - 8 (желтый)
+// 8 - 10 (зеленый)
+
+// 4. При наведении на рейтинг - открывается окошко, где юзер может оценить фильм
+// Форма состоит из 2 элементов: input and submit button
+
+// В инпут он вводит свой рейтинг, нажимает на кнопку "Rate" и он выводится в блоке с рейтингом (средний)
+
+// For example, если рейтинг был 8, а юзер оценил на 10, то вывести срейдний 9.
+// */
